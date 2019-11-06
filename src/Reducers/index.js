@@ -22,15 +22,40 @@ export const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case "add" :
-
-        return [
-            ...state, 
-            {}
-        ]
+                console.log(state.car.features);
+                if (state.car.features.find(e => action.payload === e) === undefined) {
+                  return {
+                    ...state,
+                    additionalPrice: state.additionalPrice + action.payload.price,
+                    car: {
+                      ...state.car,
+                      features: [...state.car.features, action.payload]
+                    }
+                  };
+                }
+          
+              case 'remove':
+                const newFeatures = state.car.features.filter(
+                  e => action.payload !== e.id
+                );
+          
+                return {
+                  ...state,
+                  additionalPrice: newFeatures.reduce((accu, cur) => accu + cur.price , 0),
+                  car: {
+                    ...state.car,
+                    features: newFeatures
+                  }
+                };
+          
+              default:
+                return { ...state };
+            }
+     
 
     }
 
 
-}    
+  
 
 
