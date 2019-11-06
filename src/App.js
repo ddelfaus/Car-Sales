@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { connect } from 'react-redux';
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
+import { initialState } from './Reducers';
+
+// const store = createStore( initialState)
+
 
 const App = () => {
   const state = {
@@ -44,5 +49,12 @@ const App = () => {
     </div>
   );
 };
+
+
+const mapeStateToProps = state => {
+  return {
+    
+  }
+}
 
 export default App;
