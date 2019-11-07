@@ -23,7 +23,7 @@ export const reducer = (state = initialState, action) => {
 
         case "add" :
                 console.log(state.car.features);
-                if (state.car.features.find(e => action.payload === e) === undefined) {
+                if (state.car.features.find(event => action.payload === event) === undefined) {
                   return {
                     ...state,
                     additionalPrice: state.additionalPrice + action.payload.price,
@@ -36,12 +36,12 @@ export const reducer = (state = initialState, action) => {
           
               case 'remove':
                 const newFeatures = state.car.features.filter(
-                  e => action.payload !== e.id
+                  event=> action.payload !== event.id
                 );
           
                 return {
                   ...state,
-                  additionalPrice: newFeatures.reduce((accu, cur) => accu + cur.price , 0),
+                  additionalPrice: newFeatures.reduce((accumative, current) => accumative + current.price , 0),
                   car: {
                     ...state.car,
                     features: newFeatures
